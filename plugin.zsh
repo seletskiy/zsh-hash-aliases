@@ -53,7 +53,7 @@ function hash-aliases:tail-or-last() {
     if [ $# -gt 1 ]; then
         tail -n "${@:1}"
     else
-        tail -n $1
+        tail
     fi
 }
 
@@ -62,7 +62,7 @@ function hash-aliases:head-or-first() {
     if [ $# -gt 1 ]; then
         head -n "${@:1}"
     else
-        head -n $1
+        head
     fi
 }
 
@@ -71,8 +71,8 @@ function hash-aliases:install() {
     alias -g --     '#s'='| hash-aliases:sed-substitute'
     alias -g --    '#sd'='| hash-aliases:sed-delete'
     alias -g --     '#f'='| hash-aliases:awk-print-field'
-    alias -g --     '#t'='| hash-aliases:tail-or-last 1'
-    alias -g --     '#h'='| hash-aliases:head-or-first 20'
+    alias -g --     '#t'='| hash-aliases:tail-or-last'
+    alias -g --     '#h'='| hash-aliases:head-or-first'
 
     alias -g --     '#x'='| xargs -n1 -I{}'
     alias -g --     '#c'='| cut -f'
