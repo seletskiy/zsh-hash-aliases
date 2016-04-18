@@ -3,7 +3,6 @@ Useful global aliases started with `#`
 | alias | command |
 | --- | --- |
 | `#`             | `2>&1 less` |
-| `#`             | `2>&1 less` |
 | `# blah`        | `2>&1 grep blah` |
 | `##`            | `2>&1` |
 | `#s /1/2/`      | `sed -r 's/1/2/'` |
