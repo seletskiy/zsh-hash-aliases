@@ -66,6 +66,15 @@ function hash-aliases:head-or-first() {
     fi
 }
 
+
+function hash-aliases:cut-with-delimiter() {
+    if grep -Eqx '[0-9,-]+' <<< $1; then
+        cut -f "${@}"
+    else
+        cut -d "$1" -f "${@:1}"
+    fi
+}
+
 function hash-aliases:install() {
     alias -g -- '#'='2>&1 | hash-aliases:less-or-grep'
     alias -g --     '#s'='| hash-aliases:sed-substitute'
@@ -75,9 +84,13 @@ function hash-aliases:install() {
     alias -g --     '#h'='| hash-aliases:head-or-first'
 
     alias -g --     '#x'='| xargs -n1 -I{}'
-    alias -g --     '#c'='| cut -f'
-    alias -g --    '#cs'='| cut -d" " -f'
-    alias -g --     '#w'='| wc -l'
+    alias -g --     '#c'='| hash-aliases:cut-with-delimiter'
+
+    alias -g --    '#wc'='| wc -l'
+    alias -g --    '#uc'='| uniq -c'
+
+    alias -g --    '#sn'='| sort -n'
+    alias -g --    '#sr'='| sort -nr'
 
     alias -g --    '#tt'='tail -f'
 
@@ -85,6 +98,8 @@ function hash-aliases:install() {
 
     if whence hijack:transform > /dev/null; then
         hijack:transform 'sed -re "s@^# @hash-aliases:less-or-grep @"'
+        hijack:transform 'sed -re "s@^# @hash-aliases:less-or-grep @"'
+        hijack:transform 'sed -re "s@^#s @hash-aliases:sed-substitute @"'
     fi
 }
 
