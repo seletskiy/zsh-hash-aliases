@@ -14,8 +14,14 @@ Useful global aliases started with `#`
 | `#h`            | `head` |
 | `#h 10`         | `head -n 10` |
 | `#c 7`          | `cut -f 7` |
-| `#cs 7`         | `cut -d" " -f 7` |
-| `#w`            | `wc -l` |
+| `#c ' ' 7`      | `cut -d" " -f 7` |
 | `#x`            | `xargs -n1 -I{}` |
-| `$ # a.go`      | `less a.go` |
-| `$ # a.go blah` | `grep blah a.go` |
+| `#wc`           | `wc -l` |
+| `#uc`           | `unic -c` |
+| `#sn`           | `sort -n` |
+| `#sr`           | `sort -nr` |
+| on start of cmdline | command |
+| --- | --- |
+| `$ # a.go`        | `less a.go` |
+| `$ # a.go blah`   | `grep blah a.go` |
+| `$ #s /1/2/ a.go` | `sed -rs/1/2/g a.go` |
