@@ -20,6 +20,7 @@ Useful global aliases started with `#`
 | `#uc`           | `unic -c` |
 | `#sn`           | `sort -n` |
 | `#sr`           | `sort -nr` |
+
 | on start of cmdline | command |
 | --- | --- |
 | `$ # a.go`        | `less a.go` |
