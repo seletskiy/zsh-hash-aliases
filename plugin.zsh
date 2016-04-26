@@ -50,7 +50,7 @@ function hash-aliases:awk-print-field() {
 
 
 function hash-aliases:tail-or-last() {
-    if [ $# -gt 1 ]; then
+    if [ $# -gt 0 ]; then
         tail -n "${@:1}"
     else
         tail
@@ -59,7 +59,7 @@ function hash-aliases:tail-or-last() {
 
 
 function hash-aliases:head-or-first() {
-    if [ $# -gt 1 ]; then
+    if [ $# -gt 0 ]; then
         head -n "${@:1}"
     else
         head
