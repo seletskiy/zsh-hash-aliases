@@ -75,6 +75,14 @@ function hash-aliases:cut-with-delimiter() {
     fi
 }
 
+function hash-aliases:xargs() {
+    if  grep -qF '{}' <<< "${@}"; then
+        xargs -n1 -I{} "${@}"
+    else
+        xargs -n1 "${@}"
+    fi
+}
+
 function hash-aliases:install() {
     alias -g -- '#'='2>&1 | hash-aliases:less-or-grep'
     alias -g --     '#s'='| hash-aliases:sed-substitute'
@@ -83,7 +91,7 @@ function hash-aliases:install() {
     alias -g --     '#t'='| hash-aliases:tail-or-last'
     alias -g --     '#h'='| hash-aliases:head-or-first'
 
-    alias -g --     '#x'='| xargs -n1 -I{}'
+    alias -g --     '#x'='| hash-aliases:xargs'
     alias -g --     '#c'='| hash-aliases:cut-with-delimiter'
 
     alias -g --    '#wc'='| wc -l'
