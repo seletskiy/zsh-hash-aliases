@@ -83,6 +83,13 @@ function hash-aliases:xargs() {
     fi
 }
 
+function hash-aliases:xargs-sh() {
+    local number_of_args=$1
+    shift
+
+    xargs -n$number_of_args sh -c "${@}" _
+}
+
 function hash-aliases:install() {
     alias -g -- '#'='2>&1 | hash-aliases:less-or-grep'
     alias -g --     '#s'='| hash-aliases:sed-substitute'
@@ -92,6 +99,8 @@ function hash-aliases:install() {
     alias -g --     '#h'='| hash-aliases:head-or-first'
 
     alias -g --     '#x'='| hash-aliases:xargs'
+    alias -g --    '#xn'="| hash-aliases:xargs -d$'\n'"
+    alias -g --    '#xs'="| hash-aliases:xargs-sh"
     alias -g --     '#c'='| hash-aliases:cut-with-delimiter'
 
     alias -g --    '#wc'='| wc -l'
