@@ -71,7 +71,7 @@ function hash-aliases:cut-with-delimiter() {
     if grep -Eqx '[0-9,-]+' <<< $1; then
         cut -f "${@}"
     else
-        cut -d "$1" -f "${@:1}"
+        cut -d "$1" -f "${@:2}"
     fi
 }
 
@@ -112,6 +112,7 @@ function hash-aliases:install() {
     alias -g --    '#tt'='tail -f'
 
     alias -g --     '##'='2>&1'
+    alias -g --     '#.'='2>/dev/null'
 
     if whence hijack:transform > /dev/null; then
         hijack:transform 'sed -re "s@^# @hash-aliases:less-or-grep @"'
