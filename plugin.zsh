@@ -1,14 +1,14 @@
 function hash-aliases:less-or-grep() {
     if [ -t 0 ]; then
         if [ $# -eq 1 ]; then
-            less -R "${@}"
+            less -RSFXw "${@}"
         else
             grep "$2" "$1" "${@:3}"
         fi
     else
         if [ $# -eq 0 ]; then
             if [ -t 1 ]; then
-                less -R
+                less -RSFXw
             else
                 cat
             fi
