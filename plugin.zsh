@@ -3,7 +3,7 @@ function hash-aliases:less-or-grep() {
         if [ $# -eq 1 ]; then
             less -RSFXw "${@}"
         else
-            grep "$2" "$1" "${@:3}"
+            grep --color=auto "$2" "$1" "${@:3}"
         fi
     else
         if [ $# -eq 0 ]; then
@@ -13,7 +13,7 @@ function hash-aliases:less-or-grep() {
                 cat
             fi
         else
-            grep -iE "${@}"
+            grep --color=auto -iE "${@}"
         fi
     fi
 }
