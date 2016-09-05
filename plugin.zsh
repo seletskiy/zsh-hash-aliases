@@ -115,9 +115,7 @@ function hash-aliases:install() {
     alias -g --     '#.'='2>/dev/null'
 
     if whence hijack:transform > /dev/null; then
-        hijack:transform 'sed -re "s@^# @hash-aliases:less-or-grep @"'
-        hijack:transform 'sed -re "s@^# @hash-aliases:less-or-grep @"'
-        hijack:transform 'sed -re "s@^#s @hash-aliases:sed-substitute @"'
+        hijack:transform '^# ' 'sed -re "s@^# @hash-aliases:less-or-grep @"'
     fi
 }
 
