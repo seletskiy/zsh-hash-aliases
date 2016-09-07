@@ -13,7 +13,7 @@ function hash-aliases:less-or-grep() {
                 cat
             fi
         else
-            grep --color=auto -iE "${@}"
+            grep --color=auto -iP -- "${@}"
         fi
     fi
 }
