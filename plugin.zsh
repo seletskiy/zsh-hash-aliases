@@ -105,6 +105,7 @@ function hash-aliases:install() {
 
     alias -g --    '#wc'='| wc -l'
     alias -g --    '#uc'='| uniq -c'
+    alias -g --    '#u'="| awk '!x[\$0]++'"
 
     alias -g --    '#sn'='| sort -n'
     alias -g --    '#sr'='| sort -nr'
