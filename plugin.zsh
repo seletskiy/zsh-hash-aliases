@@ -91,7 +91,7 @@ function hash-aliases:xargs-sh() {
 }
 
 function hash-aliases:install() {
-    alias -g --     '#'=' | hash-aliases:less-or-grep'
+    alias -g --      '#'='| hash-aliases:less-or-grep'
     alias -g --     '#s'='| hash-aliases:sed-substitute'
     alias -g --    '#sd'='| hash-aliases:sed-delete'
     alias -g --     '#f'='| hash-aliases:awk-print-field'
