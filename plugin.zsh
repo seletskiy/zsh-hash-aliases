@@ -92,6 +92,7 @@ function hash-aliases:xargs-sh() {
 
 function hash-aliases:install() {
     alias -g --      '#'='| hash-aliases:less-or-grep'
+    alias -g --     '#o'='| hash-aliases:less-or-grep -o'
     alias -g --     '#s'='| hash-aliases:sed-substitute'
     alias -g --    '#sd'='| hash-aliases:sed-delete'
     alias -g --     '#f'='| hash-aliases:awk-print-field'
@@ -102,6 +103,8 @@ function hash-aliases:install() {
     alias -g --    '#xn'="| hash-aliases:xargs -d$'\n'"
     alias -g --    '#xs'="| hash-aliases:xargs-sh"
     alias -g --     '#c'='| hash-aliases:cut-with-delimiter'
+
+    alias -g --    '#td'='| tr -d'
 
     alias -g --    '#wc'='| wc -l'
     alias -g --    '#uc'='| uniq -c'
