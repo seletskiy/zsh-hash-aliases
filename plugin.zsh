@@ -66,6 +66,9 @@ function hash-aliases:head-or-first() {
     fi
 }
 
+function hash-aliases:nth-line() {
+    sed "${1}q;d"
+}
 
 function hash-aliases:cut-with-delimiter() {
     if grep -Eqx '[0-9,-]+' <<< $1; then
@@ -90,6 +93,30 @@ function hash-aliases:xargs-sh() {
     xargs -n$number_of_args sh -c "${@}" _
 }
 
+function hash-aliases:xargs-zsh() {
+    local has_placeholder=false
+
+    if [[ "$*" =~ '\{\}' ]]; then
+        has_placeholder=true
+    fi
+
+    local args
+
+    while read line; do
+        args=()
+
+        if $has_placeholder; then
+            for arg in "$@"; do
+                args+=("${arg//\{\}/$line}")
+            done
+        else
+            args=("$@" "$line")
+        fi
+
+        eval "${(q)args[@]}"
+    done
+}
+
 function hash-aliases:install() {
     alias -g --      '#'='| hash-aliases:less-or-grep'
     alias -g --     '#o'='| hash-aliases:less-or-grep -o'
@@ -98,10 +125,12 @@ function hash-aliases:install() {
     alias -g --     '#f'='| hash-aliases:awk-print-field'
     alias -g --     '#t'='| hash-aliases:tail-or-last'
     alias -g --     '#h'='| hash-aliases:head-or-first'
+    alias -g --     '#n'='| hash-aliases:nth-line'
 
     alias -g --     '#x'='| hash-aliases:xargs'
     alias -g --    '#xn'="| hash-aliases:xargs -d$'\n'"
     alias -g --    '#xs'="| hash-aliases:xargs-sh"
+    alias -g --    '#xz'="| hash-aliases:xargs-zsh"
     alias -g --     '#c'='| hash-aliases:cut-with-delimiter'
 
     alias -g --    '#td'='| tr -d'
