@@ -45,7 +45,7 @@ function hash-aliases:awk-print-field() {
         fi
     done
 
-    awk "{print $args}"
+    awk "{print ${(j:,:)args[@]}}"
 }
 
 
