@@ -80,9 +80,9 @@ function hash-aliases:cut-with-delimiter() {
 
 function hash-aliases:xargs() {
     if  grep -qF '{}' <<< "${@}"; then
-        xargs -n1 -I{} "${@}"
+        xargs -r -n1 -I{} "${@}"
     else
-        xargs -n1 "${@}"
+        xargs -r -n1 "${@}"
     fi
 }
 
@@ -90,7 +90,7 @@ function hash-aliases:xargs-sh() {
     local number_of_args=$1
     shift
 
-    xargs -n$number_of_args sh -c "${@}" _
+    xargs -r -n$number_of_args sh -c "${@}" _
 }
 
 function hash-aliases:xargs-zsh() {
