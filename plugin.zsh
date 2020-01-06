@@ -147,6 +147,8 @@ function hash-aliases:install() {
     alias -g --     '##'='2>&1'
     alias -g --     '#.'='2>/dev/null'
 
+    alias -g --     '#-'='| grep -Po'
+
     if whence hijack:transform > /dev/null; then
         hijack:transform '^# ' 'sed -re "s@^# @hash-aliases:less-or-grep @"'
     fi
