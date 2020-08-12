@@ -113,7 +113,7 @@ function hash-aliases:xargs-zsh() {
             args=("$@" "$line")
         fi
 
-        eval "${(q)args[@]}"
+        eval "${args[@]}"
     done
 }
 
